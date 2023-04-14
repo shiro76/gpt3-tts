@@ -1,33 +1,41 @@
-Utilisation
+Utilisation:
 
 
 1- Télécharger  python (a ce momment j'utilise la version 3.11.3)
     https://www.python.org/downloads/
 
-    - ouvrez un terminal/invite de commande et accedez au dossier du projet: 
+2 - ouvrez un terminal/invite de commande et accedez au dossier du projet: 
+
+pour ouvrir une invite de commande sous windows :
+    appuyer sur les touches windows+r et taper cmd ou taper cmd dans la barre de recherche windows 
+
+sur mac : 
+    touche command+espace et taper terminal
     
         cd chemin/de/mon/projet
 
+vous pouvez aussi utiliser le terminal de votre editeur de code si vous en avez un
 
-2 - installer les bibliotheques:
+3 - installer les bibliotheques requises:
 
     pip install openai gtts pygame pydub python-dotenv
 
 
-3 - creer un compte sur openai et creer votre clé API https://platform.openai.com/account/api-keys et la copier dans le fichier "exemple.env.txt"   
+5 - creer un compte sur openai et creer votre clé API https://platform.openai.com/account/api-keys et la copier dans le fichier "exemple.env.txt"   
     renommer le fichier "exemple.env.txt" en ".env" 
     
 
 
-4 - lancer le fichier gpt-tts.py
+5 - lancer le fichier gpt-tts.py
     
     python gpt-tts.py
 
 
-Si vous rencontrez des erreur apres ces etapes vous pouvez suivre la demarche si dessous (utile aussi pour ceux qui ont deja python et des bibliotheques d'installer, cela permet d'eviter des probleme de compatibilité) 
+"Si vous rencontrez des erreur apres ces etapes vous pouvez suivre la demarche si dessous (utile aussi pour ceux qui ont deja python et des bibliotheques d'installées, cela permet d'eviter des problemmes de compatibilité)"
 
 
-vous rencontrez des difficultés a lancé ce script essayer d'utilisé un environnement virtuel, pour creer un environement virtuel
+essayer d'utilisé un environnement virtuel:
+pour creer un environement virtuel
 
     python -m venv myvenv
 
@@ -43,11 +51,13 @@ si vous utiliser PowerShell :
 
     .\myvenv\Scripts\Activate
 
+
 SUR MACOS:
 
 dans le terminal:
 
     source venvGPT/bin/activate
+
 
 Installer les bibliotheque dans votre environement virtuel
     
