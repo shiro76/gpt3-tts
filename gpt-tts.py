@@ -1,17 +1,21 @@
+import os
 import openai
 from gtts import gTTS
+os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
 from pygame import mixer
 from pydub import AudioSegment
 from dotenv import load_dotenv
-import os
+
 load_dotenv()
+
 openai.api_key = os.environ["openaiAPI"]
 
 def chat_gpt(messages):
+    play_audio("generation.mp3")
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=250,
+        max_tokens=500,
         n=1,
         temperature=0.5,
     )
@@ -33,7 +37,7 @@ def apply_audio_effects(audio, pitch_shift_factor):
     audio = audio.normalize(headroom=0.1)
 
     # Fade in et fade out
-    audio = audio.fade_in(2000).fade_out(2000)
+    #audio = audio.fade_in(2000).fade_out(2000)
 
     # Égalisation
     audio = audio.low_pass_filter(1500).high_pass_filter(500)
@@ -56,7 +60,7 @@ def apply_audio_effects(audio, pitch_shift_factor):
 
     return audio
 
-def text_to_speech(text, lang="fr", slow=False, pitch_shift_factor=1.3):
+def text_to_speech(text, lang="fr", slow=False, pitch_shift_factor=1.0):
     # Créer un fichier audio avec gTTS
     tts = gTTS(text=text, lang=lang, slow=slow)
     tts.save("output.mp3")
@@ -75,9 +79,10 @@ def text_to_speech(text, lang="fr", slow=False, pitch_shift_factor=1.3):
 
     # Supprimer les fichiers temporaires
     os.remove("output.mp3")
-    os.remove("output_with_effects.mp3")
+    #os.remove("output_with_effects.mp3")
 
 messages = []
+
 
 while True:
     user_message = input("Entrez un message (ou 'exit' pour quitter) : ")
@@ -91,6 +96,7 @@ while True:
 
     response_text = chat_gpt(messages)
     messages.append({"role": "assistant", "content": response_text})
+    play_audio("reponse.mp3")
     print(response_text)
     text_to_speech(response_text, lang="fr", slow=False, pitch_shift_factor=1.3)
 
