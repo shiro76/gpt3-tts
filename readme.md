@@ -1,5 +1,7 @@
 Utilisation:
-
+-
+-
+-
 
 1- Télécharger  python (a ce momment j'utilise la version 3.11.3)
     https://www.python.org/downloads/
